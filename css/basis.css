@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans|Muli|Open+Sans|Raleway');
+body {
+    margin: 0px;
+}
+
+
+.body-dark-theme {
+    background-color: #33283b;
+    font-family: 'Muli', sans-serif;
+    color: #e0e0e0;
+}
+
+.sidebar-container {
+    z-index: 30;
+    display: flex;
+    flex-direction: row;
+}
+.control-column {
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #271933;
+    height: 100%;
+    min-width: 82px;
+    padding: 0;
+    left: 0;
+    border-right: 1px solid rgb(69, 56, 83);
+}
+.detail-column {
+    
+    position: relative;
+    display: inline-flex;
+    flex-direction: column;
+    background-color: #564663;
+    height: 100%;
+    width: 0px;
+    min-width: 0px;
+    padding: 0;
+    border-right: 1px solid #453853;
+    transition: width 0.25s cubic-bezier(0.2,0.1,0.5,0.2);
+    transition: min-width 0.01s cubic-bezier(0.2,0.1,0.5,0.2);
+    box-shadow: 5px 1px 17px 1px #2d233573;
+
+}
+
+.detail-column-shown {
+    width: 220px;
+    min-width: 220px;
+}
+
+.section-list {
+    margin: 0;
+    padding: 0;
+
+}
+.section-item {
+    width: 100%;
+    height: 40px;
+    padding-top: 25px;
+    text-align: center;
+    margin-left: 0;
+    font-size: 20px;
+    user-select: none;
+    overflow: hidden;
+    border-bottom: 1px solid #76618f;
+    
+}
+
+.section-item:hover {
+    background-color: #9283b4cc
+}
+
+.section-item.selected {
+    background-color: #736e80cc
+}
+
+ul li {
+    list-style: none;
+}
+
+.doc-list {
+    position: absolute;
+    left: -40px;
+}
+.doc-bubble {
+    text-align: center;
+    height: 75px;
+    width: 75px;
+    background-color: #503166;
+    border-radius: 150%;
+    font-size: 24px;
+    font-variant-caps: titling-caps;
+    color: #cbbff5;
+    left: 0;
+    margin-left: 4px;
+    user-select: none;
+    margin-bottom: 20px;
+    transition: background-color 0.15s ease-in-out;
+    transition: border-radius 0.25s ease-in-out;
+}
+
+.doc-bubble.add {
+
+    background-color: #251b2c;
+    border: 1px solid #453853;
+}
+
+.doc-bubble:not(.add):hover {
+    border-radius: 35%;
+    background-color: #9d7db4;
+}
+
+.doc-bubble.add:hover {
+    background-color: #34283d;
+}
+
+.doc-bubble-abbrev {
+    position: relative;
+    text-align: center;
+    vertical-align: middle;
+    top: 25%;
+}
