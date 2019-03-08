@@ -6,7 +6,7 @@ const Sidebar = {
     components: {
         'composer': Composer
     },
-    data: function () {
+    data () {
         return {
             showSections: false,
             displayedSections: [],
@@ -39,7 +39,7 @@ const Sidebar = {
     },
 
     computed: {
-        sectionNames: function () {
+        sectionNames () {
             return this.displayedSections.map(s=>s.name);
         },
 
@@ -48,20 +48,17 @@ const Sidebar = {
         }
     },
     methods: {
-        displaySections: function (toDisplay) {
+        displaySections (toDisplay) {
             this.displayedSections = toDisplay;
             this.showSections = true;
         },
         
-        displayContent: function(section) {
-
-        },
-
-        setSection: function(section) {
+        setSection (section) {
             this.currentContent = section.content;
             this.selectedId = section.id;
+            console.log("Title: " + this.currentContent.title, "Text: " + this.currentContent.text)
         },
-        genId: function () {
+        genId () {
             var text = "";
             var set = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -90,7 +87,7 @@ const Sidebar = {
                 </li>
             </ul>
         </div>
-        <composer v-bind:show="!(_.isEmpty(currentContent))" v-bind:content="currentContent"></composer>
+        <composer v-bind:show="!(_.isEmpty(currentContent))" :key="selectedId" v-model="currentContent"></composer>
     </div>
     `
 }
