@@ -1,5 +1,10 @@
+import Vue from 'vue';
+import './css/basis.css';
+import './css/composer.css';
+import { Sidebar } from './components/Sidebar.js';
 
-vm = new Vue({
+Vue.use(Sidebar);
+const vm = new Vue({
     el: '#root',
     components: {
         'sidebar': Sidebar

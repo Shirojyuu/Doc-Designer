@@ -37,17 +37,19 @@ body {
     min-width: 0px;
     padding: 0;
     border-right: 1px solid #453853;
-    transition: width 0.25s cubic-bezier(0.2,0.1,0.5,0.2);
-    transition: min-width 0.01s cubic-bezier(0.2,0.1,0.5,0.2);
+    transition: all 0.45s ease-in-out;
     box-shadow: 5px 1px 17px 1px #2d233573;
 
 }
 
-.detail-column-shown {
+.detail-column.shown {
     width: 220px;
     min-width: 220px;
 }
 
+.detail-list-item .detail-column {
+    min-width: 0px;
+}
 .section-list {
     margin: 0;
     padding: 0;
@@ -55,6 +57,7 @@ body {
 }
 .section-item {
     width: 100%;
+    max-width: 220px;
     height: 40px;
     padding-top: 25px;
     text-align: center;

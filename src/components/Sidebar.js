@@ -1,3 +1,5 @@
+const _ = require('lodash');
+const {Composer} = require('./Composer.js');
 
 const Sidebar = {
     name: "Sidebar",
@@ -67,6 +69,7 @@ const Sidebar = {
             return text;
         }
     }, 
+
     template: `
     <div class="sidebar-container">
         <div class="control-column">
@@ -79,11 +82,11 @@ const Sidebar = {
                 </div>
             </ul>
         </div>
-        <div class="detail-column" v-bind:class="{'detail-column-shown': showSections}">
+        <div class="detail-column" v-bind:class="{'shown': showSections}">
             <ul id="sectionList" class="section-list">
                 <li class="section-item" v-for="s in displayedSections" :key="s.id" 
                 v-on:click="setSection(s)" v-bind:style="{'selected': isSectionSelected}">
-                    {{s.content.title}}
+                    <span class="detail-list-item">{{s.content.title}}</span>
                 </li>
             </ul>
         </div>
@@ -91,3 +94,5 @@ const Sidebar = {
     </div>
     `
 }
+
+module.exports = {Sidebar};
