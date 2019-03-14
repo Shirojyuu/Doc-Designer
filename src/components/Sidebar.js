@@ -1,5 +1,6 @@
 const _ = require('lodash');
 const {Composer} = require('./Composer.js');
+const {EventBus} = require('./EventBus.js');
 
 const Sidebar = {
     name: "Sidebar",
@@ -8,6 +9,8 @@ const Sidebar = {
     },
     data () {
         return {
+            eventBus: EventBus,
+            nextUri: 2,
             showSections: false,
             displayedSections: [],
             currentContent: {},
@@ -15,8 +18,8 @@ const Sidebar = {
             allDocs: [
                 {
                     uri: 0,
-                    title: 'Dragon Adventurer',
-                    abbrev: 'DA',
+                    title: 'A Tale of Blades',
+                    abbrev: 'TB',
                     description: '2D Action RPG-Platformer',
                     author: 'Alec Day',
                     sections: [
@@ -28,7 +31,7 @@ const Sidebar = {
                     uri: 1,
                     title: 'Secret Delivery',
                     abbrev: 'SD',
-                    description: '2D Action RPG-Platformer',
+                    description: '2D Stealth Platformer',
                     author: 'Alec Day',
                     sections: [
                         {id: "QxxzA", content: {title: "Characters"}}
@@ -64,9 +67,22 @@ const Sidebar = {
 
             for(let i = 0; i < 5; i++) text += set.charAt(Math.floor(Math.random() * set.length));
             return text;
+        },
+        addNewDocument () {
+            EventBus.$emit('add-click');
+        },
+
+        addProject (project) {
+            project.uri = this.nextUri++;
+            console.log(project);
+            this.allDocs.push(project);
         }
     }, 
-
+    mounted () {
+        EventBus.$on('add-project', (projectData) => {
+            this.addProject(projectData);
+        })
+    },
     template: `
     <div class="sidebar-container">
         <div class="control-column">
@@ -74,7 +90,7 @@ const Sidebar = {
                 <li class="doc-bubble" v-for="d in allDocs" :key="d.uri" v-bind:doc="d" v-on:click="displaySections(d.sections)">
                     <span class="doc-bubble-abbrev">{{d.abbrev}}</span>
                 </li>
-                <div class="doc-bubble add">
+                <div class="doc-bubble add" @click="addNewDocument()">
                     <span class="doc-bubble-abbrev add">+</span>
                 </div>
             </ul>
@@ -91,5 +107,7 @@ const Sidebar = {
     </div>
     `
 }
+
+//EventBus catches IPC and processes it.
 
 module.exports = {Sidebar};

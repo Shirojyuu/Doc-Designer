@@ -6,7 +6,7 @@
     margin-top: -15%;
     margin-left: -15%;
     width: 400px;
-    height: 320px;
+    min-height: 320px;
     background-color: #ddd6e7;
     box-shadow: 5px 1px 17px 1px #2d233573;
     border-radius: 25px;
@@ -23,4 +23,54 @@
 
 .modal-content {
     padding: 10px;
+}
+
+.modal-content .field {
+    float: left;
+    width: 250px;
+    height: 30px;
+    /* margin-bottom: 2px; */
+    padding-right: 10px;
+}
+
+.modal-content .userInput {
+   border: none;
+   background-color: transparent;
+   border-bottom: 1px solid #332546;
+   font-size: 18px;
+   font-style: italic;
+   
+}
+
+.modal-content .userDesc {
+    width: 300px;
+    border: 1px solid #332546;
+    background-color: transparent;
+    border-radius: 10px;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 30px;
+   
+}
+
+.modal-button {
+    float: right;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #633e97;
+    background-color: transparent;
+    color: #633e97;
+    font-size: 15px;
+    width: 90px;
+    height: 35px; 
+    transition: all 0.2s ease-in-out;
+}
+
+.modal-button:hover {
+    border: 1px solid #ddd6e7;
+    background-color: #633e97;
+    color: #ddd6e7;
+    font-size: 15px;
+    width: 90px;
+    height: 35px; 
 }

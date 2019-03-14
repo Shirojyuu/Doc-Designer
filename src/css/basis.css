@@ -123,3 +123,13 @@ ul li {
     vertical-align: middle;
     top: 25%;
 }
+
+.fadeswipe-enter-active, .fadeswipe-leave-active {
+    
+    transition: all .5s;
+}
+
+.fadeswipe-enter, .fadeswipe-leave-to {
+    transform: translateY(20px);
+    opacity: 0;
+}
