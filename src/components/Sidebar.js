@@ -2,7 +2,7 @@ const _ = require('lodash');
 const {Composer} = require('./Composer.js');
 const {EventBus} = require('./EventBus.js');
 
-//TODO: Adding a section to a project.
+
 const Sidebar = {
     name: "Sidebar",
     components: {

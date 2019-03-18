@@ -8,7 +8,6 @@ import { EventBus } from './components/EventBus.js';
 
 Vue.use(Sidebar);
 Vue.use(AddModal);
-
 //Event Bus receives IPC events.
 EventBus.$on('add-click', () => {
     vm.showModal = true;

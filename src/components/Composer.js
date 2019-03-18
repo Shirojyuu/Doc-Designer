@@ -1,14 +1,19 @@
-const Quill = require('quill');
+const { EventBus } = require('./EventBus.js');
+const { quillEditor } = require('vue-quill-editor');
+
 const Composer = {
     name: "Composer",
+    components: {
+        quillEditor
+    },
     model: {
         prop: 'content',
-        event: 'input'
+        event: 'content-updated'
     },
     props: {
         content: {
             type: Object,
-            default: () => {return {title:"RRR", text: "DDDD"}}
+           
         },
         show: {
             type: Boolean,
@@ -24,47 +29,12 @@ const Composer = {
             editor: null
         }
     },
-
-    watch: {
-        content(newContent, oldContent) {
-            // this.editor.root.innerHTML = newContent.text;
-        }
-    },
-    
-    mounted() {
-            this.editor = new Quill(this.$refs.editor, {
-                modules: {
-                    toolbar: [
-                        [{ header: [1, 2, 3, 4, false] }],
-                        ['bold', 'italic', 'underline']
-                    ]
-                },
-                theme: 'snow',
-                formats: ['bold', 'underline', 'header', 'italic']
-            });
-    
-            if(this.show)
-            {
-                this.editor.root.innerHTML = this.content.text;
-            }
-            this.editor.on('text-change', () => {
-                this.update();
-            });
-    },
-    
-    methods: {
-        update() {
-            let uText = this.editor.getText() ? this.editor.root.innerHTML : '';
-            let updated = {title: this.content.title, text: uText};
-            this.$emit('input', updated);
-        }
-    },
     
     template: `
         <div class="composer-area">
             <div class="composer-inner" v-show="show">
                 <input class="composer-title-input" type="text" v-model="content.title"></input>
-                <div ref="editor"></div>
+                <quill-editor v-model="content.text" ref="quillComposer"></quill-editor>
             </div>
         </div>
     `
