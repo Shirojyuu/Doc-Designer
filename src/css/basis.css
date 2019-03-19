@@ -55,7 +55,8 @@ button:focus {
 .section-list {
     margin: 0;
     padding: 0;
-
+    overflow-y: scroll;
+    height: 100%;
 }
 .section-item {
     width: 100%;
@@ -136,11 +137,15 @@ ul li {
 }
 
 .sectionList-enter-active, .sectionList-leave-active {
-    transition: all 1s;
+    transition: all 0.35s;
+    transform: translateY(30px);
+    opacity: 0;
   }
   .sectionList-enter, .sectionList-leave-to /* .sectionList-leave-active below version 2.1.8 */ {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(-30px);
+    transition: all 0.35s;
+
   }
 
 .sect-button {
@@ -174,3 +179,28 @@ ul li {
     transform: translateY(20px);
     opacity: 0;
 }
+
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgb(206, 194, 235);
+    border-radius: 12px;
+  }
+  
+  .main-content {
+      height: 95%;
+     
+  }
+  .heading-bar {
+      height: 5%;
+      background-color: #271933;
+      color: #cbbff5;
+      font-size: 2em;
+      padding-left: 1%;
+  }

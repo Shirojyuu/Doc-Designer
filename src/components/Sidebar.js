@@ -58,6 +58,7 @@ const Sidebar = {
         displaySections (project) {
             this.displayedProject = project;
             this.displayedSections = project.sections;
+            EventBus.$emit('change-project', project);
             this.showSections = true;
         },
         
@@ -116,11 +117,13 @@ const Sidebar = {
         </div>
         <div class="detail-column" v-bind:class="{'shown': showSections}">
             <ul id="sectionList" class="section-list">
-                <button class="sect-button" @click="prepareNewSection">New Section</button>
+            <button class="sect-button" @click="prepareNewSection">New Section</button>
+                <transition-group name="sectionList" tag="li">
                 <li class="section-item" v-for="s in displayedSections" :key="s.id" 
                 v-on:click="setSection(s)" v-bind:style="{'selected': isSectionSelected}">
                     <span class="detail-list-item">{{s.content.title}}</span>
                 </li>
+                </transition-group>
                 <div id="newSection" class="section-item" v-show="isAddingNewSection">
                     <input ref="newSec" id="newSectionInput" class="userInput" type="text" v-model="nextSectionName" v-on:keyup.enter="addNewSection">
                 </div>
