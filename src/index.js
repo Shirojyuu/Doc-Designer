@@ -28,7 +28,7 @@ const vm = new Vue({
     el: '#root',
     data () {
         return {
-            showModal: false
+            showModal: false,
         }
     },
     components: {

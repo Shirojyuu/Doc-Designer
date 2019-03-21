@@ -204,3 +204,23 @@ ul li {
       font-size: 2em;
       padding-left: 1%;
   }
+
+  .header-description {
+      position: fixed;
+      right: 0px;
+      top: 1%;
+      padding-right: 1%;
+      font-size: 20px;
+  }
+  .default-project-msg {
+    color: #ab9fd6;
+    position: absolute;
+    z-index: 70;
+    font-style: oblique;
+    font-size: 26px;
+    top: 40%;
+    left: 35%;
+    text-align: center;
+  }
+
+  
